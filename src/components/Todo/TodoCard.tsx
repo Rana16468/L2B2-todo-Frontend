@@ -9,10 +9,13 @@ type TTodoProps={
     id:string;
     title:string;
     discription:string;
+    priority:string;
     isCompleted:boolean
     
 }
 const TodoCard = ({ ...list}:TTodoProps) => {
+
+   
 
     const dispatch=useAppDispatch();
    
@@ -29,10 +32,11 @@ const TodoCard = ({ ...list}:TTodoProps) => {
         <>
           
           <div className="bg-white rounded flex justify-between items-center p-3">
-    <input onChange={handelToggleState} disabled={list?.isCompleted} type="checkbox" name="completed" id="completed" />
-    <p className="font-semibold">{list.title}</p>
-    {list?.isCompleted? <p className="text-green-500 text-xl font-serif">Done</p>:<p className="text-red-500 text-xl font-serif">Pending</p>}
-    <p >{list.discription}</p>
+    <input className="mr-3" onChange={handelToggleState} disabled={list?.isCompleted} type="checkbox" name="completed" id="completed" />
+    <p className="font-semibold flex-1">{list.title}</p>
+    {list?.isCompleted? <p className="text-green-500 text-xl font-serif flex-1">Done</p>:<p className="text-red-500 text-xl font-serif flex-1">Pending</p>}
+    <p className="font-semibold flex-1">{list?.priority}</p>
+    <p  className="flex-[2]">{list.discription}</p>
     <div className="space-x-5">
     <Button onClick={()=>dispatch(removeTodos(list.id))} className="bg-primary-gradint  text-sm font-serif"> 
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

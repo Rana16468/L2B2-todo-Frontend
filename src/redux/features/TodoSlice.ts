@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
- type TTodo={
+ export type TTodo={
     id:string;
     title:string;
     discription:string;
+    priority:string;
     isCompleted:boolean;
 
  }
@@ -38,7 +39,7 @@ const TodoSlice = createSlice({
           
         },
         updateFieldById:(state,action)=>{
-            console.log(action.payload);
+        
             state.todos=state.todos.map((item)=>{
                 if(item.id===action.payload.id)
                 {
