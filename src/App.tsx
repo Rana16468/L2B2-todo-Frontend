@@ -1,6 +1,6 @@
 
 import Todo from "./pages/Todo"
-
+import { ToastContainer } from 'react-toastify';
 
 function App() {
  
@@ -9,6 +9,7 @@ function App() {
     <>
     {/* <h1>Sohel</h1>
     <Button>my Buttons</Button> */}
+    <ToastContainer />
     <Todo/>
      
     </>

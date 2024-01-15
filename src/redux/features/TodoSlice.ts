@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
  export type TTodo={
-    id:string;
+    _id:string;
     title:string;
     discription:string;
     priority:string;
@@ -29,11 +29,11 @@ const TodoSlice = createSlice({
         removeTodos:(state,action:PayloadAction<string>)=>{
            
 
-           state.todos= state.todos.filter((v)=>v.id!==action.payload);
+           state.todos= state.todos.filter((v)=>v._id!==action.payload);
         },
         isCompletedToggle:(state,action:PayloadAction<string>)=>{
 
-            const task=state.todos.find((v)=>v.id===action.payload);
+            const task=state.todos.find((v)=>v._id===action.payload);
             task!.isCompleted=!task?.isCompleted;
             state.todos=state?.todos?.sort((a, b) => (a.isCompleted === b.isCompleted ? 0 : a.isCompleted ? 1 : -1));
           
@@ -41,7 +41,7 @@ const TodoSlice = createSlice({
         updateFieldById:(state,action)=>{
         
             state.todos=state.todos.map((item)=>{
-                if(item.id===action.payload.id)
+                if(item._id===action.payload.id)
                 {
                     return { ...item,...action.payload}
                 }
